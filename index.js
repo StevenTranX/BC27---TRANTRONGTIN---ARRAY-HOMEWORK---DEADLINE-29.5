@@ -1,17 +1,71 @@
 "use strict";
 let positiveNumbers = [];
 // Add number into Array positiveNumbers
-const addNumber = document
-  .getElementById("addNumber")
-  .addEventListener("click", function () {
-    const number = +document.getElementById("positiveNumber").value;
+document.getElementById("addNumber").addEventListener("click", function () {
+  const number = +document.getElementById("positiveNumber").value;
+  positiveNumbers.push(number);
+  const showAddNumber = document.querySelector(".showAddNumber");
+  showAddNumber.style.color = "#fff";
+  showAddNumber.textContent = `
+    ${positiveNumbers}
+    `;
+});
+
+// Add number by pressing "Enter"
+// document
+//   .getElementById("addNumber")
+//   .addEventListener("keydown", function (enter) {
+//     console.log("A key was pressed ");
+//     if (enter.key === "Enter") {
+//       const number = +document.getElementById("positiveNumber").value;
+//       positiveNumbers.push(number);
+//       const showAddNumber = document.querySelector(".showAddNumber");
+//       showAddNumber.style.color = "#fff";
+//       showAddNumber.textContent = `
+//     ${positiveNumbers}
+//     `;
+//     }
+//   });
+document.addEventListener("keydown", function (e) {
+  console.log(e.key);
+  const number = +document.getElementById("positiveNumber").value;
+  if (e.key === "Enter") {
     positiveNumbers.push(number);
     const showAddNumber = document.querySelector(".showAddNumber");
     showAddNumber.style.color = "#fff";
     showAddNumber.textContent = `
+     ${positiveNumbers}
+      `;
+  }
+});
+// Remove Number
+
+document.getElementById("removeNumber").addEventListener("click", function () {
+  const number = +document.getElementById("positiveNumber").value;
+  positiveNumbers.pop(number);
+  const showAddNumber = document.querySelector(".showAddNumber");
+  showAddNumber.style.color = "#fff";
+  showAddNumber.textContent = `
     ${positiveNumbers}
     `;
-  });
+});
+
+document.addEventListener("keydown", function (e) {
+  console.log(e.key);
+  const number = +document.getElementById("positiveNumber").value;
+  if (e.key === "Delete") {
+    positiveNumbers.pop(number);
+    const showAddNumber = document.querySelector(".showAddNumber");
+    showAddNumber.style.color = "#fff";
+    showAddNumber.textContent = `
+     ${positiveNumbers}
+      `;
+  }
+});
+const addNumber = function () {
+  const number = +document.getElementById("positiveNumber").value;
+  positiveNumbers.push(number);
+};
 // Exercise 1 + 2 Calculate sum of positive Numebrs , Quantity of an array
 // ================================================================================================================================
 const calcSum = document
@@ -63,43 +117,73 @@ let lastEvenNumber = 0;
 document
   .getElementById("lastEvenNumber")
   .addEventListener("click", function () {
-    
     // Cách 1 dùng hàm for duyệt mảng từ index 0 -> cuối, gán cho cái cuối cùng
 
     // for (let i = 0 ; i < positiveNumbers.length; i++) {
     //   if (positiveNumbers[i] % 2 === 0) {
     //    lastEvenNumber = positiveNumbers[i];
-    //   } 
+    //   }
     // }
-    // Cách 2 tạo 1 hàm duyệt mảng từ cuối , khi phần tử chẵn thì lập tức dừng hàm return về giá trị 
+    // Cách 2 tạo 1 hàm duyệt mảng từ cuối , khi phần tử chẵn thì lập tức dừng hàm return về giá trị
 
-    lastEvenNumber = lastEvenNumber2 (positiveNumbers)
-    const showLastEvenNumber = document.querySelector(".showlastEvenNumber");
+    lastEvenNumber = lastEvenNumber2(positiveNumbers);
+    const showLastEvenNumber = document.querySelector(".showLastEvenNumber");
     showLastEvenNumber.style.color = "#fff";
     showLastEvenNumber.textContent = `
   The last Even Number is ${lastEvenNumber}
   `;
   });
 
-  function lastEvenNumber2 (even) {
-    for (let  i = positiveNumbers.length - 1; i >= 0 ;  i--) {
-      if (positiveNumbers[i] % 2 === 0) {
-        return  even = positiveNumbers[i];
-      }
+function lastEvenNumber2(even) {
+  for (let i = positiveNumbers.length - 1; i >= 0; i--) {
+    if (positiveNumbers[i] % 2 === 0 && positiveNumbers[i] >= 0 ) {
+      return (even = positiveNumbers[i]);
     }
   }
+}
 // let lastEvenNumber = lastEvenNumber2 (numbers)
 // console.log (lastEvenNumber2(numbers))
 // console.log (lastEvenNumber)
 // ========================================================================================================
 
-// hàm sort không sắp xếp số ( chỉ sắp xếp chuỗi) nên phải viết hàm compare để truyền vào 
-function sortNumber () {
-  const compare = (x , y) => x - y
-  const sortnumbers = positiveNumbers.sort(compare)
+// hàm sort không sắp xếp số ( chỉ sắp xếp chuỗi) nên phải viết hàm compare để truyền vào
+function sortNumber() {
+  // Ôn lại arrow function : const tên function = (parameter) => thực thi
+  const compare = (x, y) => x - y;
+  const sortnumbers = positiveNumbers.sort(compare);
   const showNumberOrder = document.querySelector(".showNumberOrder");
   showNumberOrder.style.color = "#fff";
   showNumberOrder.textContent = `
-Number order : ${sortnumbers}`
+Number order : ${sortnumbers}`;
+}
+// ========================================================================================================
+function isInteger() {
+  let count = 0;
+  let check = 0 
+  for (let i = 0; i < positiveNumbers.length; i++) {
+    check = checkInteger (positiveNumbers[i]) ; 
+    if (check) {
+      count++;
+    }
+  }
+  const showInteger = document.querySelector(".showInteger");
+  showInteger.style.color = "#fff";
+  showInteger.textContent = `
+Number of Integer : ${count}`;
 }
 
+// let array = [1, 2, 3, 4.4, 5.5, 9.9, 10, 9.999, 20, 23];
+// let count = 0,
+//   check = 0;
+// for (let i = 0; i < array.length; i++) {
+//   check = checkInteger(array[i]);
+//   if (check) {
+//     count++;
+//   }
+//   console.log(count);
+// }
+// function checkInteger(x) {
+//   if (Number.isInteger(x)) {
+//     return x;
+//   }
+// }

@@ -23,28 +23,47 @@
       <label for="positiveNumber" class="form-label"
         >Sum of positive numbers
       </label>
-      <input type="text" id="positiveNumber" class="form-control" />
+      <input type="number" id="positiveNumber" class="form-control" />
     </div>
-    <button class="btn btn-success mx-5" id="addNumber"> Task 0 . Add Numbers</button>
-    <div class="bg-success mt-3 mx-5 showAddNumber"></div>
+    <!-- ====================================================================== -->
+    <button class="btn btn-success mx-5" id="addNumber">
+      Task 0 . Click or Press "Enter" to Add Numbers
+    </button>
+    <button class="btn btn-danger my-4 mx-5" id="removeNumber">
+      Task 0 . Click or Press "Delete" to Remove Numbers
+    </button>
+
+    <div class="bg-success my-3 mx-5 showAddNumber"></div>
     <br />
+    <!-- ====================================================================== -->
     <button class="btn btn-success mx-5" id="calcPositiveNumbers">
       Task 1 + 2 . Calculate Positive Numbers
     </button>
     <div class="bg-info mt-3 mx-5 showSum"></div>
+    <!-- ====================================================================== -->
     <button class="btn btn-success mx-5" id="minNumber">
       Task 3 + 4 . Find minimum number
     </button>
     <div class="bg-info mt-3 mx-5 showMin"></div>
+    <!-- ====================================================================== -->
     <button class="btn btn-success mx-5" id="lastEvenNumber">
       Task 5 . Find the last Even number
     </button>
-    <div class="bg-info mt-3 mx-5 showSortNumber"></div>
-    <button class="btn btn-success mx-5" id="sortNumber" onclick = "sortNumber ()">
-      Task 7 . Rearrange numbers in order 
+    <div class="bg-info mt-3 mx-5 showLastEvenNumber"></div>
+    <!-- ====================================================================== -->
+    <button
+      class="btn btn-success mx-5"
+      id="sortNumber"
+      onclick="sortNumber ()"
+    >
+      Task 7 . Rearrange numbers in order
     </button>
     <div class="bg-info mt-3 mx-5 showNumberOrder"></div>
-
+    <!-- ====================================================================== -->
+    <button class="btn btn-success mx-5" id="isInteger" onclick=" isInteger ()">
+      Task 9 . Numbers of Integer
+    </button>
+    <div class="bg-info mt-3 mx-5 showInteger"></div>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="./index.js"></script>
     <script
