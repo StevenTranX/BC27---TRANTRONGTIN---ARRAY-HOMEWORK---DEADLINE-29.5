@@ -182,8 +182,68 @@ Number of Integer : ${count}`;
 //   }
 //   console.log(count);
 // }
-// function checkInteger(x) {
-//   if (Number.isInteger(x)) {
-//     return x;
+function checkInteger(x) {
+  if (Number.isInteger(x)) {
+    return x;
+  }
+}
+// ========================================================================================================
+// let array = [1,2,3,4,5,6,7,8,9,10]
+// for (let i = 0 ; i < array.length ; i++  ) {
+//  console.log(checkPrime(array[i])) ;
+// }
+  
+
+// function checkPrime (x) {
+//   let check = true ; 
+//   if ( x < 2 ) return check = false ; 
+//   for (let i = 2 ; i < x ; i++ ){
+//     if ( x % i === 0 ) {
+//         check = false ;
+//         break ; 
+//     } 
+//   }
+//   if (check) {
+//     x + ": so nguyen to "
+//   } else {
+//     x + ": Khong phai la so nguyen to "
 //   }
 // }
+// checkPrime()
+// ========================================================================================================
+const comparePosNeg = function () {
+  let count1 = 0 ; 
+  let count2 = 0 ; 
+  for (let i = 0 ; i < positiveNumbers.length ; i++) {
+    if (positiveNumbers[i] > 0)
+      count1++ ; 
+      else {
+        count2++
+      }
+  }
+  const showPosNeg = document.querySelector(".showPosNeg");
+  if ( count1 > count2) {
+    showPosNeg.style.color = "#fff";
+    showPosNeg.textContent = `
+    Positive Numbers > Negative Numbers`;
+  } else if ( count2 > count1 ) {
+    showPosNeg.style.color = "#fff";
+    showPosNeg.textContent = `
+    Positive Numbers < Negative Numbers`;
+  } else {
+    showPosNeg.style.color = "#fff";
+    showPosNeg.textContent = `
+    Positive Numbers = Negative Numbers`;
+  }
+}
+// ========================================================================================================
+function indexSwap ( ) {
+  const pos1 = document.getElementById("index1").value ; 
+  const pos2 = document.getElementById("index2").value ; 
+  const swap = [ positiveNumbers[pos1], positiveNumbers[pos2] ] = [ positiveNumbers[pos2], positiveNumbers[pos1] ];
+  // ES6 Destructuring Assignment
+  const showSwap = document.querySelector(".showSwap");
+  showSwap.style.color = "#fff";
+  showSwap.textContent = ` ${swap}
+  `;
+}
