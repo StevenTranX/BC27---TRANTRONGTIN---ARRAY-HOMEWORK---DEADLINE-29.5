@@ -136,7 +136,7 @@ document
 
 function lastEvenNumber2(even) {
   for (let i = positiveNumbers.length - 1; i >= 0; i--) {
-    if (positiveNumbers[i] % 2 === 0 && positiveNumbers[i] >= 0 ) {
+    if (positiveNumbers[i] % 2 === 0 && positiveNumbers[i] >= 0) {
       return (even = positiveNumbers[i]);
     }
   }
@@ -159,9 +159,9 @@ Number order : ${sortnumbers}`;
 // ========================================================================================================
 function isInteger() {
   let count = 0;
-  let check = 0 
+  let check = 0;
   for (let i = 0; i < positiveNumbers.length; i++) {
-    check = checkInteger (positiveNumbers[i]) ; 
+    check = checkInteger(positiveNumbers[i]);
     if (check) {
       count++;
     }
@@ -192,41 +192,50 @@ function checkInteger(x) {
 // for (let i = 0 ; i < array.length ; i++  ) {
 //  console.log(checkPrime(array[i])) ;
 // }
-  
-
-// function checkPrime (x) {
-//   let check = true ; 
-//   if ( x < 2 ) return check = false ; 
-//   for (let i = 2 ; i < x ; i++ ){
-//     if ( x % i === 0 ) {
-//         check = false ;
-//         break ; 
-//     } 
-//   }
-//   if (check) {
-//     x + ": so nguyen to "
-//   } else {
-//     x + ": Khong phai la so nguyen to "
-//   }
-// }
+function checkPrime() {
+  const showPrime = document.querySelector(".showPrime");
+  for (let i = 0; i < positiveNumbers.length; i++) {
+    if (isPrime(positiveNumbers[i])) {
+      showPrime.style.color = "#fff";
+      showPrime.textContent = `
+       The first Prime Number is  ${positiveNumbers[i]}
+       `;
+      break;
+    } else {
+      showPrime.style.color = "#fff";
+      showPrime.textContent = `
+       There is no Prime  Number 
+       `;
+    }
+  }
+}
+function isPrime(num) {
+  let prime = num != 1;
+  for (let i = 2; i < num; i++) {
+    if (num % i == 0) {
+      prime = false;
+      break;
+    }
+  }
+  return prime;
+}
+console.log(isPrime(7));
 // checkPrime()
 // ========================================================================================================
 const comparePosNeg = function () {
-  let count1 = 0 ; 
-  let count2 = 0 ; 
-  for (let i = 0 ; i < positiveNumbers.length ; i++) {
-    if (positiveNumbers[i] > 0)
-      count1++ ; 
-      else {
-        count2++
-      }
+  let count1 = 0;
+  let count2 = 0;
+  for (let i = 0; i < positiveNumbers.length; i++) {
+    if (positiveNumbers[i] > 0) count1++;
+    else count2++;
+    // có thể lược giản {} cho hàm if hoặc for nếu thực thi đơn giản
   }
   const showPosNeg = document.querySelector(".showPosNeg");
-  if ( count1 > count2) {
+  if (count1 > count2) {
     showPosNeg.style.color = "#fff";
     showPosNeg.textContent = `
     Positive Numbers > Negative Numbers`;
-  } else if ( count2 > count1 ) {
+  } else if (count2 > count1) {
     showPosNeg.style.color = "#fff";
     showPosNeg.textContent = `
     Positive Numbers < Negative Numbers`;
@@ -235,12 +244,15 @@ const comparePosNeg = function () {
     showPosNeg.textContent = `
     Positive Numbers = Negative Numbers`;
   }
-}
+};
 // ========================================================================================================
-function indexSwap ( ) {
-  const pos1 = document.getElementById("index1").value ; 
-  const pos2 = document.getElementById("index2").value ; 
-  const swap = [ positiveNumbers[pos1], positiveNumbers[pos2] ] = [ positiveNumbers[pos2], positiveNumbers[pos1] ];
+function indexSwap() {
+  const pos1 = document.getElementById("index1").value;
+  const pos2 = document.getElementById("index2").value;
+  const swap = ([positiveNumbers[pos1], positiveNumbers[pos2]] = [
+    positiveNumbers[pos2],
+    positiveNumbers[pos1],
+  ]);
   // ES6 Destructuring Assignment
   const showSwap = document.querySelector(".showSwap");
   showSwap.style.color = "#fff";
